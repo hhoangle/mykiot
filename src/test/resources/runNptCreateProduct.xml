@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Npt">
+  <listeners>
+    <listener class-name="commons.MethodListener" />
+    <listener class-name="reportConfig.ReportNGListener" />
+    <listener class-name="reportConfig.ExtentTestListener" />
+    <listener class-name="org.uncommons.reportng.HTMLReporter"/>
+    <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
+  </listeners>
+
+  <test name="Run On CHROME">
+	<parameter name="browser" value="chrome"/>
+    <classes>
+      <class name="Mykiot.nptCreateProduct"/>
+<!--      <class name="Mykiot.npp.AddOrder"/>-->
+<!--      <class name="Mykiot.npp.CreateCategory"/>-->
+<!--      <class name="Mykiot.npp.ProductListAndViewDetailProduct"/>-->
+<!--      <class name="Mykiot.npp.ViewAndEditPersonalInformation"/>-->
+<!--      <class name="Mykiot.npp.ConfirmReceivedGoods"/>-->
+    </classes>
+  </test>
+
+</suite>
