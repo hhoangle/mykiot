@@ -9,7 +9,7 @@ public class NptDetailGroceryStorePageObject extends BasePage {
         this.driver = driver;
     }
 
-    public String getInforInDetailPage(WebDriver driver, String locator, String dynamicValue) {
+    public String getInforInDetailPage(String dynamicValue) {
         waitForElementVisible(driver,NptDetailGroceryPageUI.STORE_NAME_IN_DETAIL_PAGE,dynamicValue);
         return getElementText(driver,NptDetailGroceryPageUI.STORE_NAME_IN_DETAIL_PAGE,dynamicValue);
     }

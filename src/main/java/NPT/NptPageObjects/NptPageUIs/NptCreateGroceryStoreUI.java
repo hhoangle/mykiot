@@ -13,4 +13,5 @@ public class NptCreateGroceryStoreUI {
     public static final String CLOSE_TIME_DROPDOWN = "//div[@class='vc-select'][1]/select";
     public static final String CLOSE_TIME_OPTIONS_LIST = "//div[@class='vc-select'][1]/select";
     public static final String SAVE_GROCERY_BUTTON = "//button[@class='w-full flex items-center text-sm rounded-lg font-medium py-2.5 px-4 bg-red text-white hover:bg-red-dark-1 focus:bg-red-light-1 justify-center']/span[text()='Lưu lại']";
+    public static final String WARNING_HINT = "//label[contains(text(),'%s')]/following-sibling::div/following-sibling::p";
 }

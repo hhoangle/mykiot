@@ -54,4 +54,13 @@ public class NptCreateGroceryStorePageObject extends BasePage {
         clickToElement(driver, NptCreateGroceryStoreUI.SAVE_GROCERY_BUTTON);
         return new NptDetailGroceryStorePageObject(driver);
     }
+
+    public void clickToInputField(String inputNameField) {
+        clickToElement(driver, NptCreateEmployeeUI.INPUT_FIELD, inputNameField);
+    }
+
+    public String getWarningMessage(String dynamicValue) {
+        waitForElementVisible(driver,NptCreateGroceryStoreUI.WARNING_HINT, dynamicValue);
+        return getElementText(driver,NptCreateGroceryStoreUI.WARNING_HINT,dynamicValue);
+    }
 }

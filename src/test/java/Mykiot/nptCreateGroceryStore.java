@@ -4,7 +4,6 @@ import NPT.NptPageObjects.NptDetailGroceryStorePageObject;
 import NPT.NptPageObjects.NptHomePageObject;
 import NPT.NptPageObjects.NptLoginPageObject;
 import NPT.NptPageObjects.NptCreateGroceryStorePageObject;
-import NPT.NptPageObjects.NptPageUIs.NptDetailGroceryPageUI;
 import commons.BaseTest;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
@@ -21,9 +20,9 @@ public class nptCreateGroceryStore extends BaseTest {
     private NptCreateGroceryStorePageObject nptCreateGroceryStorePageObject;
     private NptDetailGroceryStorePageObject nptDetailGroceryStorePageObject;
     private String phoneNumber, storeName, passWord, webSite, storeEmail, representativeName, storeDescription,contactName,
-            storeNameField,phoneNumberField,passWordField, website_field, storeEmailField,representativeNameField,contactNameField,
-            storeDescriptionField,storeNameTitle,phoneTitle, webSiteTitle,emailTitle,representativeNameTitle,contactNameTitle;
-
+            storeNameField,phoneNumberField,passWordField, websiteField, storeEmailField,representativeNameField,contactNameField,
+            storeDescriptionField,storeNameTitle,phoneTitle, warningHint,emailTitle,representativeNameTitle,contactNameTitle,
+            storeNameTit,emailHint,phoneNumberTit,websiteTit,passwordTit,emailTit;
     @BeforeClass
     public void beforeClass() {
         browserName = "chrome";
@@ -37,7 +36,7 @@ public class nptCreateGroceryStore extends BaseTest {
         passWord = "12345678";
         passWordField = "Nhập mật khẩu";
         webSite = nptCreateGroceryStorePageObject.getRandomString();
-        website_field ="Nhập tên link cửa hàng";
+        websiteField ="Nhập tên link cửa hàng";
         storeEmail = "email@store.com";
         storeEmailField = "Nhập email";
         representativeName = "Nguyen Van B";
@@ -48,23 +47,31 @@ public class nptCreateGroceryStore extends BaseTest {
         contactNameField = "Nhập tên người liên hệ";
         storeNameTitle = "Tên cửa hàng";
         phoneTitle = "Số điện thoại";
-        webSiteTitle = "Website";
+        warningHint = "Bạn cần điền vào mục này";
+        emailHint = "Không đúng định dạng email";
         emailTitle = "Email";
         representativeNameTitle = "Người đại diện";
         contactNameTitle = "Người liên hệ";
+        storeNameTit = "Tên CHTH";
+        phoneNumberTit = "Số điện thoại";
+        passwordTit = "Mật khẩu";
+        websiteTit = "Địa chỉ Website";
+        emailTit = "Email";
+
     }
+
     public void goToHomePage() {
         nptHomePage.openPageUrl(driver, NPT_LOGIN);
     }
     @Test
-    public void TC_01_Create_Store(){
+    public void TC_01_Create_Store_With_Valid_Infor(){
         goToHomePage();
         nptCreateGroceryStorePageObject = nptHomePage.clickToManageGroceryStore();
         nptCreateGroceryStorePageObject.clickToCreateGroceryStore();
         nptCreateGroceryStorePageObject.insertStoreInfor(storeName,storeNameField);
         nptCreateGroceryStorePageObject.insertStoreInfor(phoneNumber,phoneNumberField);
         nptCreateGroceryStorePageObject.insertStoreInfor(passWord,passWordField);
-        nptCreateGroceryStorePageObject.insertStoreInfor(webSite,website_field);
+        nptCreateGroceryStorePageObject.insertStoreInfor(webSite, websiteField);
         nptCreateGroceryStorePageObject.insertStoreInfor(storeEmail,storeEmailField);
         nptCreateGroceryStorePageObject.insertStoreInfor(representativeName,representativeNameField);
         nptCreateGroceryStorePageObject.insertStoreInfor(contactName,contactNameField);
@@ -75,11 +82,35 @@ public class nptCreateGroceryStore extends BaseTest {
         nptCreateGroceryStorePageObject.selectCloseTime();
         nptCreateGroceryStorePageObject.insertStoreInfor(storeDescription,storeDescriptionField);
         nptDetailGroceryStorePageObject = nptCreateGroceryStorePageObject.clickSaveGroceryStore();
-        assertEquals(nptDetailGroceryStorePageObject.getInforInDetailPage(driver,NptDetailGroceryPageUI.STORE_NAME_IN_DETAIL_PAGE,storeNameTitle),storeName);
-        assertEquals(nptDetailGroceryStorePageObject.getInforInDetailPage(driver,NptDetailGroceryPageUI.STORE_NAME_IN_DETAIL_PAGE,phoneTitle),phoneNumber);
-        assertEquals(nptDetailGroceryStorePageObject.getInforInDetailPage(driver,NptDetailGroceryPageUI.STORE_NAME_IN_DETAIL_PAGE,emailTitle),storeEmail);
-        assertEquals(nptDetailGroceryStorePageObject.getInforInDetailPage(driver,NptDetailGroceryPageUI.STORE_NAME_IN_DETAIL_PAGE,representativeNameTitle),representativeName);
-        assertEquals(nptDetailGroceryStorePageObject.getInforInDetailPage(driver,NptDetailGroceryPageUI.STORE_NAME_IN_DETAIL_PAGE,contactNameTitle),contactName);
+        assertEquals(nptDetailGroceryStorePageObject.getInforInDetailPage(storeNameTitle),storeName);
+        assertEquals(nptDetailGroceryStorePageObject.getInforInDetailPage(phoneTitle),phoneNumber);
+        assertEquals(nptDetailGroceryStorePageObject.getInforInDetailPage(emailTitle),storeEmail);
+        assertEquals(nptDetailGroceryStorePageObject.getInforInDetailPage(representativeNameTitle),representativeName);
+        assertEquals(nptDetailGroceryStorePageObject.getInforInDetailPage(contactNameTitle),contactName);
+    }
+    @Test
+    public void TC_02_Create_Store_Without_Input(){
+        goToHomePage();
+        nptCreateGroceryStorePageObject = nptHomePage.clickToManageGroceryStore();
+        nptCreateGroceryStorePageObject.clickToCreateGroceryStore();
+        nptCreateGroceryStorePageObject.clickToInputField(storeNameField);
+        nptCreateGroceryStorePageObject.clickToInputField(phoneNumberField);
+        nptCreateGroceryStorePageObject.clickToInputField(passWordField);
+        nptCreateGroceryStorePageObject.clickToInputField(websiteField);
+        nptCreateGroceryStorePageObject.clickToInputField(storeEmailField);
+        nptCreateGroceryStorePageObject.clickToInputField(representativeNameField);
+        assertEquals(nptCreateGroceryStorePageObject.getWarningMessage(storeNameTit),warningHint);
+        assertEquals(nptCreateGroceryStorePageObject.getWarningMessage(phoneNumberTit),warningHint);
+        assertEquals(nptCreateGroceryStorePageObject.getWarningMessage(passwordTit),warningHint);
+        assertEquals(nptCreateGroceryStorePageObject.getWarningMessage(websiteTit),warningHint);
+        assertEquals(nptCreateGroceryStorePageObject.getWarningMessage(emailTit),emailHint);
+    }
+    @Test
+    public void TC_03(){
+        goToHomePage();
+        nptCreateGroceryStorePageObject = nptHomePage.clickToManageGroceryStore();
+        nptCreateGroceryStorePageObject.clickToCreateGroceryStore();
+
     }
     @AfterClass
     public void afterClass() {
