@@ -16,4 +16,5 @@ public class GlobalConstants {
     public static final int THREE_SECONDS = 3;
     public static final long FIVE_SECONDS = 5;
     public static final long LONG_TIMEOUT = 20;
+    public static final int CLICK_INCREASE = 4;
 }

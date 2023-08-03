@@ -22,7 +22,7 @@ public class nptCreateGroceryStore extends BaseTest {
     private String phoneNumber, storeName, passWord, webSite, storeEmail, representativeName, storeDescription,contactName,
             storeNameField,phoneNumberField,passWordField, websiteField, storeEmailField,representativeNameField,contactNameField,
             storeDescriptionField,storeNameTitle,phoneTitle, warningHint,emailTitle,representativeNameTitle,contactNameTitle,
-            storeNameTit,emailHint,phoneNumberTit,websiteTit,passwordTit,emailTit;
+            storeNameTit,emailHint,phoneNumberTit,websiteTit,passwordTit,emailTit,representativeNameTit;
     @BeforeClass
     public void beforeClass() {
         browserName = "chrome";
@@ -57,7 +57,7 @@ public class nptCreateGroceryStore extends BaseTest {
         passwordTit = "Mật khẩu";
         websiteTit = "Địa chỉ Website";
         emailTit = "Email";
-
+        representativeNameTit = "Người đại diện";
     }
 
     public void goToHomePage() {
@@ -97,20 +97,13 @@ public class nptCreateGroceryStore extends BaseTest {
         nptCreateGroceryStorePageObject.clickToInputField(phoneNumberField);
         nptCreateGroceryStorePageObject.clickToInputField(passWordField);
         nptCreateGroceryStorePageObject.clickToInputField(websiteField);
-        nptCreateGroceryStorePageObject.clickToInputField(storeEmailField);
         nptCreateGroceryStorePageObject.clickToInputField(representativeNameField);
+        nptCreateGroceryStorePageObject.clickToInputField(contactNameField);
         assertEquals(nptCreateGroceryStorePageObject.getWarningMessage(storeNameTit),warningHint);
         assertEquals(nptCreateGroceryStorePageObject.getWarningMessage(phoneNumberTit),warningHint);
         assertEquals(nptCreateGroceryStorePageObject.getWarningMessage(passwordTit),warningHint);
         assertEquals(nptCreateGroceryStorePageObject.getWarningMessage(websiteTit),warningHint);
-        assertEquals(nptCreateGroceryStorePageObject.getWarningMessage(emailTit),emailHint);
-    }
-    @Test
-    public void TC_03(){
-        goToHomePage();
-        nptCreateGroceryStorePageObject = nptHomePage.clickToManageGroceryStore();
-        nptCreateGroceryStorePageObject.clickToCreateGroceryStore();
-
+        assertEquals(nptCreateGroceryStorePageObject.getWarningMessage(representativeNameTit),warningHint);
     }
     @AfterClass
     public void afterClass() {

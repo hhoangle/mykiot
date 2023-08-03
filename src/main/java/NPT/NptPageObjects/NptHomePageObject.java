@@ -59,4 +59,9 @@ public class NptHomePageObject extends BasePage {
         clickToElement(driver, NptHomePageUI.MANAGE_GROCERY_STORE_BUTTON);
         return new NptCreateGroceryStorePageObject(driver);
     }
+
+    public NptMykiotProduct clickToMykiotProduct() {
+        clickToElement(driver, NptHomePageUI.MYKIOT_PRODUCT);
+        return new NptMykiotProduct(driver);
+    }
 }

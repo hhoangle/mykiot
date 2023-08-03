@@ -3,6 +3,8 @@ package commons;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
+
+import NPT.NptPageObjects.NptPageUIs.NptMykiotProductUI;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Cookie;
@@ -20,6 +22,7 @@ import org.apache.commons.lang3.RandomStringUtils;
 
 
 import static commons.BasePageUI.*;
+import static commons.GlobalConstants.CLICK_INCREASE;
 import static org.apache.commons.lang.RandomStringUtils.randomNumeric;
 import static org.testng.Assert.assertTrue;
 
@@ -648,5 +651,10 @@ public class BasePage {
             }
         }
         return allItemsDenied;
+    }
+    public void clickMultiTimesToElement(WebDriver driver,String locator, int timeToClick){
+        for (int i = 0; i < timeToClick; i++) {
+            clickToElement(driver,locator);
+        }
     }
 }

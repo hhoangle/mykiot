@@ -7,4 +7,5 @@ public class NptHomePageUI {
     public static final String PURCHASE_ORDER_BUTTON = "//p[text()='Đơn đặt hàng']";
     public static final String MANAGE_EMPLOYEE_BUTTON = "//p[text()='Quản lý nhân viên']";
     public static final String MANAGE_GROCERY_STORE_BUTTON = "//p[text()='Quản lý CHTH']";
+    public static final String MYKIOT_PRODUCT = "//p[text()='Sản phẩm Mykiot']";
 }
