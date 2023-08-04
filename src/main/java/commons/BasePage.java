@@ -19,6 +19,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.apache.commons.lang3.RandomStringUtils;
+import org.testng.Assert;
 
 
 import static commons.BasePageUI.*;
@@ -656,5 +657,11 @@ public class BasePage {
         for (int i = 0; i < timeToClick; i++) {
             clickToElement(driver,locator);
         }
+    }
+    public boolean isButtonEnabled(WebDriver driver, String locator){
+        boolean buttonEnabled = false;
+        WebElement button = driver.findElement(By.xpath(locator));
+        Assert.assertFalse(button.isEnabled());
+        return buttonEnabled;
     }
 }
