@@ -68,6 +68,7 @@ public class nptCreateGroceryStore extends BaseTest {
         goToHomePage();
         nptCreateGroceryStorePageObject = nptHomePage.clickToManageGroceryStore();
         nptCreateGroceryStorePageObject.clickToCreateGroceryStore();
+        //INSERT STORE INFO
         nptCreateGroceryStorePageObject.insertStoreInfor(storeName,storeNameField);
         nptCreateGroceryStorePageObject.insertStoreInfor(phoneNumber,phoneNumberField);
         nptCreateGroceryStorePageObject.insertStoreInfor(passWord,passWordField);
@@ -82,6 +83,7 @@ public class nptCreateGroceryStore extends BaseTest {
         nptCreateGroceryStorePageObject.selectCloseTime();
         nptCreateGroceryStorePageObject.insertStoreInfor(storeDescription,storeDescriptionField);
         nptDetailGroceryStorePageObject = nptCreateGroceryStorePageObject.clickSaveGroceryStore();
+        //AFTER CREATING, INFOR MUST BE SAME AS INPUT
         assertEquals(nptDetailGroceryStorePageObject.getInforInDetailPage(storeNameTitle),storeName);
         assertEquals(nptDetailGroceryStorePageObject.getInforInDetailPage(phoneTitle),phoneNumber);
         assertEquals(nptDetailGroceryStorePageObject.getInforInDetailPage(emailTitle),storeEmail);
@@ -93,12 +95,14 @@ public class nptCreateGroceryStore extends BaseTest {
         goToHomePage();
         nptCreateGroceryStorePageObject = nptHomePage.clickToManageGroceryStore();
         nptCreateGroceryStorePageObject.clickToCreateGroceryStore();
+        //NOT INPUT ANYTHING, WARNING MESSAGE SHOULD BE SHOWN
         nptCreateGroceryStorePageObject.clickToInputField(storeNameField);
         nptCreateGroceryStorePageObject.clickToInputField(phoneNumberField);
         nptCreateGroceryStorePageObject.clickToInputField(passWordField);
         nptCreateGroceryStorePageObject.clickToInputField(websiteField);
         nptCreateGroceryStorePageObject.clickToInputField(representativeNameField);
         nptCreateGroceryStorePageObject.clickToInputField(contactNameField);
+        //GET WARNING MESSAGE, IF FIELD IS BLANK THEN IT SHOULD BE DISPLAYED
         assertEquals(nptCreateGroceryStorePageObject.getWarningMessage(storeNameTit),warningHint);
         assertEquals(nptCreateGroceryStorePageObject.getWarningMessage(phoneNumberTit),warningHint);
         assertEquals(nptCreateGroceryStorePageObject.getWarningMessage(passwordTit),warningHint);
