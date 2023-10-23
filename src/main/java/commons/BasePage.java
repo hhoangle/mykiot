@@ -24,7 +24,7 @@ import org.testng.Assert;
 
 import static commons.BasePageUI.*;
 import static commons.GlobalConstants.CLICK_INCREASE;
-import static org.apache.commons.lang.RandomStringUtils.randomNumeric;
+import static org.apache.commons.lang3.RandomStringUtils.randomNumeric;
 import static org.testng.Assert.assertTrue;
 
 public class BasePage {
