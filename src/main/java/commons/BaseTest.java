@@ -43,7 +43,7 @@ public class BaseTest {
 
             case FIREFOX:
                 WebDriverManager.firefoxdriver().setup();
-                System.setProperty(FirefoxDriver.SystemProperty.DRIVER_USE_MARIONETTE, "true");
+                System.setProperty(FirefoxDriver.SystemProperty.BROWSER_PROFILE, "true");
                 System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE, GlobalConstants.PROJECT_PATH + "\\browserLogs\\FirefoxLog.log");
                 driver = new FirefoxDriver();
                 break;

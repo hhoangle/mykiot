@@ -11,7 +11,7 @@
   <test name="Run On CHROME">
 	<parameter name="browser" value="chrome"/>
     <classes>
-      <class name="Mykiot.adminCreateProduct"/>
+      <class name="Mykiot.adminLogin"/>
 
     </classes>
   </test>

@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-import NPT.NptPageObjects.NptPageUIs.NptMykiotProductUI;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Cookie;
@@ -20,10 +19,9 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.testng.Assert;
-
+import java.time.Duration;
 
 import static commons.BasePageUI.*;
-import static commons.GlobalConstants.CLICK_INCREASE;
 import static org.apache.commons.lang3.RandomStringUtils.randomNumeric;
 import static org.testng.Assert.assertTrue;
 
@@ -312,8 +310,8 @@ public class BasePage {
         }
     }
 
-    public void overrideImplicitTimeout(WebDriver driver, long timeOut) {
-        driver.manage().timeouts().implicitlyWait(timeOut, TimeUnit.SECONDS);
+    public void overrideImplicitTimeout(WebDriver driver, Duration timeOut) {
+        driver.manage().timeouts().implicitlyWait(timeOut);
     }
 
     public boolean isElementDisplay(WebDriver driver, String locatorType, String... dynamicValues) {
@@ -617,8 +615,8 @@ public class BasePage {
         return RandomStringUtils.randomAlphabetic(5);
     }
 
-    private long longTimeout = GlobalConstants.LONG_TIMEOUT;
-    private long shortTimeout = GlobalConstants.SHORT_TIMEOUT;
+    private Duration longTimeout = Duration.ofSeconds(GlobalConstants.LONG_TIMEOUT);
+    private Duration shortTimeout = Duration.ofSeconds(GlobalConstants.SHORT_TIMEOUT);
     public static void scrollDown(WebDriver driver) {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
